@@ -7,3 +7,7 @@
 
 [Stable Version](https://basilpokesearch.netlify.app/)
 
+![Poké Search](https://i.imgur.com/GniLf87.jpeg)
+
+- **FCC - Project**
+
