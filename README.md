@@ -7,5 +7,5 @@
 
 ![Poké Search](https://i.imgur.com/GniLf87.jpeg)
 
-**FCC - Project**
+Poké Search APP for FCC
 
