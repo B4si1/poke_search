@@ -104,11 +104,11 @@ br{
 
 @media screen and (max-width: 600px) {
     #search-input {
-        width: 100%;
+        width: 80%;
     }
     #search-button {
-        width: 100%;
-        margin-top: 5px;
+        width: 20%;
+        margin-top: 15px;
     }
 }
 
