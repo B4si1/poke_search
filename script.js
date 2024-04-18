@@ -69,6 +69,9 @@ function elementHighlight(input){
     case 'GRASS':
       return 'green';
     break;
+    case 'PSYCHIC':
+      return 'aqua';
+    break;
     default:
       return '';
   }
