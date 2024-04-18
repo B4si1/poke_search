@@ -24,7 +24,7 @@ html, body {
     align-items: center;
     background-color: var(--main-background);
     color: var(--main-text-color);
-    font-family: "Jersey 20", sans-serif;
+    font-family: "Rowdies", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
@@ -47,6 +47,7 @@ html, body {
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 200px;
+    color: red;
 }
 
 #search-button {
@@ -83,7 +84,7 @@ h1{
 }
 
 p {
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-bottom: 5px;
     white-space: pre;
     font-weight: 700;
