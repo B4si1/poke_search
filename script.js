@@ -95,7 +95,7 @@ function displayPokemonInfo(info){
   poke_id.innerHTML = `ID : <span>#${info.id}</span>`;
   poke_img.src = `${info.sprites.front_default}`;
   titles.innerHTML = `BASE<span>STAT</span>`
-  poke_hp.innerHTML = `HP : <span>${info.order}</span>`;
+  poke_hp.innerHTML = `HP : <span>${info.stats[0].base_stat}</span>`;
   poke_exp.innerHTML = `XP : <span>${info.base_experience}`;
   poke_weight.innerHTML = `Weight : <span>${info.weight}</span>`;
   poke_height.innerHTML = `Height : <span>${info.height}</span>`;
