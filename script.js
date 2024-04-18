@@ -72,6 +72,9 @@ function elementHighlight(input){
     case 'PSYCHIC':
       return 'aqua';
     break;
+    case 'FAIRY':
+      return 'pink';
+    break;
     default:
       return '';
   }
