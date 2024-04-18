@@ -1,10 +1,10 @@
 # Poké Search 🐉
 
+Try it out [here](https://basilpokesearch.netlify.app/)
+
 ![Poké Search](https://i.imgur.com/GniLf87.jpeg)
 
 PokeStats Search is a simple web application that allows users to search for Pokémon and view their stats using the Pokémon API.
-
-Try it out [here](https://basilpokesearch.netlify.app/)
 
 ## Features
 
