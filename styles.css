@@ -87,7 +87,6 @@ p {
     font-weight: 700;
 }
 
-
 #sprite{
     width: 126px;
     height: auto;
@@ -98,9 +97,6 @@ br{
     background-color: beige;
 }
 
-.red{
-    color: #e73d3d;
-}
 
 @media screen and (max-width: 600px) {
     #search-input {
@@ -112,10 +108,34 @@ br{
     }
 }
 
+.red{
+    color: #e73d3d;
+}
 
+.purple{
+    color: purple;
+}
 
+.blue{
+    color: blue;
+}
 
+.grey{
+    color:gray;
+}
 
+.orange{
+    color: orangered;
+}
 
+.brown{
+    color:brown;
+}
 
+.yellow{
+    color: yellow;
+}
+.green{
+    color: green;
+}
 
