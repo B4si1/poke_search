@@ -111,7 +111,7 @@ function displayPokemonInfo(info){
   <source src="${info.cries.latest}" type="audio/ogg">
   Your browser does not support the audio element.
   </audio>`
-  poke_warning.innerHTML = `volume warning!`;
+  poke_warning.innerHTML = `<span></span>volume warning!<span></span>`;
   poke_warning.classList.add('red');
 }
 
