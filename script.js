@@ -112,10 +112,9 @@ function displayPokemonInfo(info){
   poke_speed.innerHTML = `Speed : <span>${info.stats[5].base_stat}</span>`;
   poke_cries.innerHTML += `<audio controls volume="0.2">
   <source src="${info.cries.latest}" type="audio/ogg">
-  Your browser does not support the audio element.
+  Your browser does not support this audio element.
   </audio>`
   poke_warning.innerHTML = `<span></span>volume warning!<span></span>`;
-  poke_warning.classList.add('red');
 }
 
 const elements = [poke_types, poke_name, poke_hp, poke_id, poke_exp, poke_weight, poke_height, poke_attack, poke_defense, poke_special_attack, poke_special_defense, poke_speed, error, titles, poke_abilities, poke_warning, poke_cries];
