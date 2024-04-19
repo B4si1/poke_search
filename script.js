@@ -22,7 +22,12 @@ const titles = document.getElementById("titles");
 
 inputBtn.addEventListener('click', function(e){
   clearCurrentSearch();
-  getPokemonInfo(inputString.value.toLowerCase())
+  if(inputString.value == ''){
+    error_display.innerHTML = 'Please enter a Pokémon name or ID!';
+  }else{
+    getPokemonInfo(inputString.value.toLowerCase());
+  }
+  
 });
 
 
@@ -46,48 +51,46 @@ function getPokemonInfo(request) {
 
 }
 
+const ELEMENT_COLORS = [
+  {name: 'NORMAL', color:'#aaaa99',},
+  {name: 'FIRE', color: '#ff4422',},
+  {name: 'WATER', color: '#3399ff',},
+  {name: 'ELECTRIC', color: '#3399ff',},
+  {name: 'GRASS', color: '#3399ff',},
+  {name: 'ICE', color: '#3399ff',},
+  {name: 'FIGHTING', color: '#3399ff',},
+  {name: 'POISON', color: '#aa5599',},
+  {name: 'GROUND', color: '#ddbb55',},
+  {name: 'FLYING', color: '#8899ff',},
+  {name: 'PSYCHIC', color: '#ff5599',},
+  {name: 'BUG', color: '#aabb22',},
+  {name: 'ROCK', color: '#bbaa66',},
+  {name: 'GHOST', color: '#6666bb',},
+  {name: 'DRAGON', color: '#7766ee',},
+  {name: 'DARK', color: '#775544',},
+  {name: 'STEEL', color: '#aaaabb',},
+  {name: 'FAIRY', color: '#ee99ee',},
+]
+
 function elementHighlight(input){
-  switch(input){
-    case 'POISON':
-      return 'purple';
-    break;
-    case 'STONE':
-      return 'grey';
-    break;
-    case 'FIRE':
-      return 'orange';
-    break;
-    case 'WATER':
-      return 'blue';
-    break;
-    case 'EARTH':
-      return 'brown';
-    break;
-    case 'ELECTRIC':
-      return 'yellow';
-    break;
-    case 'GRASS':
-      return 'green';
-    break;
-    case 'PSYCHIC':
-      return 'aqua';
-    break;
-    case 'FAIRY':
-      return 'pink';
-    break;
-    default:
-      return '';
-  }
+  
+  let colorValue = '';
+
+  ELEMENT_COLORS.forEach(element =>{
+    if(input == element.name){
+      colorValue = element.color;
+    }
+  })
+  return colorValue;
 }
 
 function displayPokemonInfo(info){
-  console.log(info);
   const poke_data = info.types;
   const poke_moves = info.abilities;
   poke_types.innerHTML = `TYPE(s) : `
 
   poke_data.forEach(element => {
-      poke_types.innerHTML += `<span class="${elementHighlight(element.type.name.toUpperCase())}">${element.type.name.toUpperCase()}</span>`;
+      poke_types.innerHTML += `<span style="color:${elementHighlight(element.type.name.toUpperCase())};">${element.type.name.toUpperCase()}</span>`;
   });
 
   poke_moves.forEach(element => {
@@ -97,7 +100,7 @@ function displayPokemonInfo(info){
   poke_name.innerHTML = `NAME : <span>${info.name.toUpperCase()}</span>`;
   poke_id.innerHTML = `ID : <span>#${info.id}</span>`;
   poke_img.src = `${info.sprites.front_default}`;
-  titles.innerHTML = `BASE<span>STAT</span>`
+  titles.innerHTML = `<u>BASE</u><span><u>STAT</u></span>`
   poke_hp.innerHTML = `HP : <span>${info.stats[0].base_stat}</span>`;
   poke_exp.innerHTML = `XP : <span>${info.base_experience}`;
   poke_weight.innerHTML = `Weight : <span>${info.weight}</span>`;
@@ -115,7 +118,7 @@ function displayPokemonInfo(info){
   poke_warning.classList.add('red');
 }
 
-const elements = [poke_types, poke_name, poke_hp, poke_exp, poke_weight, poke_height, poke_attack, poke_defense, poke_special_attack, poke_special_defense, poke_speed, error, titles, poke_abilities, poke_warning, poke_cries];
+const elements = [poke_types, poke_name, poke_hp, poke_id, poke_exp, poke_weight, poke_height, poke_attack, poke_defense, poke_special_attack, poke_special_defense, poke_speed, error, titles, poke_abilities, poke_warning, poke_cries];
 
 function clearCurrentSearch(){
   
