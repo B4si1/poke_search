@@ -92,6 +92,12 @@ button {
     border: 1px solid white;
 }
 
+@-moz-document url-prefix() {
+    button {
+      margin-bottom: 20px; 
+    }
+  }
+
 .poke-infos{
     display: flex;
     flex-direction: column;
