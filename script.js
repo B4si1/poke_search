@@ -64,7 +64,7 @@ const ELEMENT_COLORS = [
   {name: 'NORMAL', color:'#aaaa99',},
   {name: 'FIRE', color: '#ff4422',},
   {name: 'WATER', color: '#3399ff',},
-  {name: 'ELECTRIC', color: '#ffcc33',},
+  {name: 'ELECTRIC', color: '#f0de00',},
   {name: 'GRASS', color: '#77cc55',},
   {name: 'ICE', color: '#66ccff',},
   {name: 'FIGHTING', color: '#bb5544',},
@@ -84,7 +84,7 @@ const ELEMENT_COLORS = [
 const CLASS_COLORS = [
   {color: 'RED', background:'#e87070', accent:'red',},
   {color: 'BLUE', background:'#64c0bb', accent:'blue',},
-  {color: 'YELLOW', background:'#f8ca2b', accent:'yellow',},
+  {color: 'YELLOW', background:'#998d00', accent:'#f0de00',},
   {color: 'GREEN', background:'#309c00', accent:'green',},
   {color: 'BLACK', background:'#575555', accent:'black',},
   {color: 'BROWN', background:'#d5b38b', accent:'brown',},
