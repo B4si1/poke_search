@@ -21,6 +21,7 @@ const poke_warning = document.getElementById("warning");
 const error_display = document.getElementById("error");
 const titles = document.getElementById("titles");
 const poke_card = document.getElementById("poke-infos");
+const header = document.getElementById("header-container");
 
 inputRandomBtn.addEventListener('click', function(e){
   clearCurrentSearch();
@@ -90,7 +91,7 @@ const CLASS_COLORS = [
   {color: 'PURPLE', background:'#d181e0', accent:'purple',},
   {color: 'GRAY', background:'#90908f', accent:'gray',},
   {color: 'WHITE', background:'#b9b9b7', accent:'white',},
-  {color: 'PINK', background:'#fdccfd', accent: 'pink',},
+  {color: 'PINK', background:'#f49ac1', accent: '#ed145b',},
 ]
 
 function colorCard(colorName){
@@ -123,7 +124,7 @@ async function displayPokemonInfo(input){
   const poke_moves = info.abilities;
   
   poke_card.classList.add('poke-infos-display')
-
+  header.style = 'margin-top: 50px;';
   
 
   poke_types.innerHTML = `TYPE(s) : `
@@ -162,6 +163,7 @@ async function displayPokemonInfo(input){
 const elements = [poke_flavour, poke_types, poke_name, poke_hp, poke_id, poke_exp, poke_weight, poke_height, poke_attack, poke_defense, poke_special_attack, poke_special_defense, poke_speed, error, titles, poke_abilities, poke_warning, poke_cries];
 
 function clearCurrentSearch(){
+  header.style = 'margin-top: 200px;';
   poke_card.classList.toggle('poke-infos-display');
   poke_card.style = "";
   poke_img.src = "Poke.png";
