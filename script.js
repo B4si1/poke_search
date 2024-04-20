@@ -117,9 +117,9 @@ function elementHighlight(input){
 
 async function displayPokemonInfo(input){
 
-  const apiUrl = input; 
-  const info = await fetchData('https://pokeapi.co/api/v2/pokemon/' + input);
-  const pokeSpeciesData = await fetchData('https://pokeapi.co/api/v2/pokemon-species/' + input); 
+  // const apiUrl = input; 
+  const info = await fetchData('https://pokeapi.co/api/v2/pokemon/' + input.toLowerCase());
+  const pokeSpeciesData = await fetchData('https://pokeapi.co/api/v2/pokemon-species/' + input.toLowerCase()); 
   const poke_data = info.types;
   const poke_moves = info.abilities;
   
