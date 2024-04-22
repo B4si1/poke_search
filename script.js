@@ -91,7 +91,7 @@ const CLASS_COLORS = [
   {color: 'PURPLE', background:'#d181e0', accent:'purple',},
   {color: 'GRAY', background:'#90908f', accent:'gray',},
   {color: 'WHITE', background:'#b9b9b7', accent:'white',},
-  {color: 'PINK', background:'#f49ac1', accent: '#ed145b',},
+  {color: 'PINK', background:'#f49ac1', accent: '#ec008c',},
 ]
 
 function colorCard(colorName){
