@@ -2,13 +2,14 @@
 
 Try it out [here](https://basilpokesearch.netlify.app/)
 
-![Poké Search](https://i.imgur.com/GniLf87.jpeg)
+![Poké Search](https://i.imgur.com/J9WIvvS.png)
 
 PokeStats Search is a simple web application that allows users to search for Pokémon and view their stats using the Pokémon API.
 
 ## Features
 
 - **Search**: Users can search for Pokémon by name or ID.
+- **Random Search**: Picks a random Pokémon ID to lookup.
 - **Stats Display**: Upon searching, the app displays the stats of the searched Pokémon, including its name, type, abilities, sounds, and base stats.
 - **Responsive Design**: The app is designed to be mobile-friendly, ensuring a seamless experience across different devices.
 
