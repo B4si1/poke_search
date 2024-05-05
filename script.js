@@ -34,6 +34,15 @@ inputRandomBtn.addEventListener('click', function(e){
   }
 })
 
+document.addEventListener('keypress',function (e){
+  // console.log(e)
+  if(e.code == 'Enter'){
+    e.preventDefault()
+    clearCurrentSearch();
+    displayPokemonInfo(inputString.value);
+  }
+})
+
 inputBtn.addEventListener('click', function(e){
   clearCurrentSearch();
   const input_string = inputString.value;
@@ -114,7 +123,7 @@ function colorCard(colorName){
   CLASS_COLORS.forEach(el => {
     if(colorName === el.color){
       // poke_card.style = `background-color:${el.background};border-left: 10px solid ${el.accent};`
-      poke_card.style = `background-image: linear-gradient(180deg, ${el.background} 80%, ${el.accent});;border-left: 10px solid ${el.accent};`
+      poke_card.style = `background-image: linear-gradient(180deg, #575555 80%, ${el.accent});border-left: 10px solid ${el.accent};`
       // poke_card.style = `border-left: 10px solid ${el.accent};`
     }
   })
@@ -137,10 +146,10 @@ async function displayPokemonInfo(input){
 
   // const apiUrl = input; 
   const info = await fetchData('https://pokeapi.co/api/v2/pokemon/' + input.toLowerCase());
-  // console.log(info);
+  console.log(info);
   const pokeSpeciesData = await fetchData('https://pokeapi.co/api/v2/pokemon-species/' + input.toLowerCase()); 
   const poke_data = info.types;
-  // console.log(pokeSpeciesData);
+  console.log(pokeSpeciesData);
   const poke_moves = info.abilities;
 
   let pokeTypeString = '';
