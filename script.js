@@ -81,23 +81,41 @@ const ELEMENT_COLORS = [
   {name: 'FAIRY', color: '#ee99ee',},
 ]
 
+// const CLASS_COLORS = [
+//   {color: 'RED', background:'#e87070', accent:'red',},
+//   {color: 'BLUE', background:'#64c0bb', accent:'blue',},
+//   {color: 'YELLOW', background:'#998d00', accent:'#f0de00',},
+//   {color: 'GREEN', background:'#309c00', accent:'green',},
+//   {color: 'BLACK', background:'#575555', accent:'black',},
+//   {color: 'BROWN', background:'#d5b38b', accent:'brown',},
+//   {color: 'PURPLE', background:'#d181e0', accent:'purple',},
+//   {color: 'GRAY', background:'#90908f', accent:'gray',},
+//   {color: 'WHITE', background:'#b9b9b7', accent:'white',},
+//   {color: 'PINK', background:'#da6f9d', accent: '#ec008c',},
+// ]
+
 const CLASS_COLORS = [
-  {color: 'RED', background:'#e87070', accent:'red',},
-  {color: 'BLUE', background:'#64c0bb', accent:'blue',},
-  {color: 'YELLOW', background:'#998d00', accent:'#f0de00',},
-  {color: 'GREEN', background:'#309c00', accent:'green',},
+  {color: 'RED', background:'#575555', accent:'red',},
+  {color: 'BLUE', background:'#575555', accent:'blue',},
+  {color: 'YELLOW', background:'#575555', accent:'#f0de00',},
+  {color: 'GREEN', background:'#575555', accent:'green',},
   {color: 'BLACK', background:'#575555', accent:'black',},
-  {color: 'BROWN', background:'#d5b38b', accent:'brown',},
-  {color: 'PURPLE', background:'#d181e0', accent:'purple',},
-  {color: 'GRAY', background:'#90908f', accent:'gray',},
-  {color: 'WHITE', background:'#b9b9b7', accent:'white',},
-  {color: 'PINK', background:'#f49ac1', accent: '#ec008c',},
+  {color: 'BROWN', background:'#575555', accent:'brown',},
+  {color: 'PURPLE', background:'#575555', accent:'purple',},
+  {color: 'GRAY', background:'#575555', accent:'gray',},
+  {color: 'WHITE', background:'#575555', accent:'white',},
+  {color: 'PINK', background:'#575555', accent: '#ec008c',},
 ]
+
+
+
 
 function colorCard(colorName){
   CLASS_COLORS.forEach(el => {
     if(colorName === el.color){
-      poke_card.style = `background-color:${el.background};border-left: 10px solid ${el.accent};`
+      // poke_card.style = `background-color:${el.background};border-left: 10px solid ${el.accent};`
+      poke_card.style = `background-image: linear-gradient(180deg, ${el.background} 80%, ${el.accent});;border-left: 10px solid ${el.accent};`
+      // poke_card.style = `border-left: 10px solid ${el.accent};`
     }
   })
 
@@ -119,26 +137,45 @@ async function displayPokemonInfo(input){
 
   // const apiUrl = input; 
   const info = await fetchData('https://pokeapi.co/api/v2/pokemon/' + input.toLowerCase());
+  console.log(info);
   const pokeSpeciesData = await fetchData('https://pokeapi.co/api/v2/pokemon-species/' + input.toLowerCase()); 
   const poke_data = info.types;
+  console.log(pokeSpeciesData);
   const poke_moves = info.abilities;
+
+  let pokeTypeString = '';
+  let pokeFlavorString = '';
+
+  for(let i = 0; i < pokeSpeciesData.genera.length; i++){
+    if(pokeSpeciesData.genera[i].language.name == 'en'){
+      pokeTypeString = pokeSpeciesData.genera[i].genus;
+      break;
+    }
+  }
+
+  for(let i = 0; i < pokeSpeciesData.flavor_text_entries.length; i++){
+    if(pokeSpeciesData.flavor_text_entries[i].language.name == 'en'){
+      pokeFlavorString = pokeSpeciesData.flavor_text_entries[i].flavor_text;
+      break;
+    }
+  }
   
-  poke_card.classList.add('poke-infos-display')
+  
   header.style = 'margin-top: 50px;';
   
 
-  poke_types.innerHTML = `TYPE(s) : `
+  poke_types.innerHTML = ``
 
   poke_data.forEach(element => {
-      poke_types.innerHTML += `<span style="color:${elementHighlight(element.type.name.toUpperCase())};">${element.type.name.toUpperCase()}</span>`;
+      poke_types.innerHTML += `<span style="padding: 2px; border-radius: 3px;color:${elementHighlight(element.type.name.toUpperCase())}; border: 1px solid ${elementHighlight(element.type.name.toUpperCase())}">${element.type.name.toUpperCase()}</span>`;
   });
 
   poke_moves.forEach(element => {
     poke_abilities.innerHTML += `<span><small>${element.ability.name.toUpperCase()}</small> `;
   })
 
-  poke_name.innerHTML = `NAME : <span>${info.name.toUpperCase()}</span>`;
-  poke_id.innerHTML = `ID : <span>#${info.id}</span>`;
+  poke_name.innerHTML = `NAME : <span>${info.name.toUpperCase()} #${info.id}</span>`;
+  poke_id.innerHTML = `TYPE : <span>${pokeTypeString}</span>`;
   poke_img.src = `${info.sprites.front_default}`;
   titles.innerHTML = `<u>BASE</u><span><u>STAT</u></span>`
   poke_hp.innerHTML = `HP : <span>${info.stats[0].base_stat}</span>`;
@@ -150,14 +187,16 @@ async function displayPokemonInfo(input){
   poke_special_attack.innerHTML = `Special Attack : <span>${info.stats[3].base_stat}</span>`;
   poke_special_defense.innerHTML = `Special Defense : <span>${info.stats[4].base_stat}</span>`;
   poke_speed.innerHTML = `Speed : <span>${info.stats[5].base_stat}</span>`;
-  poke_flavour.innerHTML = `<span></span><small class='wrap'>${pokeSpeciesData.flavor_text_entries[0].flavor_text}</small><span></span>`;
+  poke_flavour.innerHTML = `<span></span><small class='wrap'>${pokeFlavorString}</small><span></span>`;
   poke_cries.innerHTML += `<audio controls volume="0.2">
   <source src="${info.cries.latest}" type="audio/ogg">
   Your browser does not support this audio element.
   </audio>`
   poke_warning.innerHTML = `<span></span>volume warning!<span></span>`;
+  poke_warning.style = 'text-shadow: 0px 0px 4px black;'
 
   colorCard(pokeSpeciesData.color.name.toUpperCase())
+  poke_card.classList.add('poke-infos-display')
 }
 
 const elements = [poke_flavour, poke_types, poke_name, poke_hp, poke_id, poke_exp, poke_weight, poke_height, poke_attack, poke_defense, poke_special_attack, poke_special_defense, poke_speed, error, titles, poke_abilities, poke_warning, poke_cries];
