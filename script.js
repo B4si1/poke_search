@@ -211,6 +211,7 @@ async function displayPokemonInfo(input){
 const elements = [poke_flavour, poke_types, poke_name, poke_hp, poke_id, poke_exp, poke_weight, poke_height, poke_attack, poke_defense, poke_special_attack, poke_special_defense, poke_speed, error, titles, poke_abilities, poke_warning, poke_cries];
 
 function clearCurrentSearch(){
+  // inputString.value = '';
   header.style = 'margin-top: 200px;';
   poke_card.classList.toggle('poke-infos-display');
   poke_card.style = "";
