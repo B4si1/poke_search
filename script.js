@@ -146,10 +146,10 @@ async function displayPokemonInfo(input){
 
   // const apiUrl = input; 
   const info = await fetchData('https://pokeapi.co/api/v2/pokemon/' + input.toLowerCase());
-  console.log(info);
+  // console.log(info);
   const pokeSpeciesData = await fetchData('https://pokeapi.co/api/v2/pokemon-species/' + input.toLowerCase()); 
   const poke_data = info.types;
-  console.log(pokeSpeciesData);
+  // console.log(pokeSpeciesData);
   const poke_moves = info.abilities;
 
   let pokeTypeString = '';
