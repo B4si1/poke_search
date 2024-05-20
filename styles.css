@@ -167,3 +167,7 @@ br{
 .wrap{
     text-wrap: wrap;
 }
+
+.hide{
+    display: none;
+}

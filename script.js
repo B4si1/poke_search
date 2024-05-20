@@ -22,6 +22,10 @@ const error_display = document.getElementById("error");
 const titles = document.getElementById("titles");
 const poke_card = document.getElementById("poke-infos");
 const header = document.getElementById("header-container");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
+
+let BUTTON_ID_VALUE = 0;
 
 inputRandomBtn.addEventListener('click', function(e){
   clearCurrentSearch();
@@ -143,7 +147,7 @@ function elementHighlight(input){
 }
 
 async function displayPokemonInfo(input){
-
+  clearCurrentSearch();
   // const apiUrl = input; 
   const info = await fetchData('https://pokeapi.co/api/v2/pokemon/' + input.toLowerCase());
   // console.log(info);
@@ -206,12 +210,17 @@ async function displayPokemonInfo(input){
 
   colorCard(pokeSpeciesData.color.name.toUpperCase())
   poke_card.classList.add('poke-infos-display')
+  BUTTON_ID_VALUE = info.id;
+  prevBtn.classList.remove('hide');
+  nextBtn.classList.remove('hide');
 }
 
 const elements = [poke_flavour, poke_types, poke_name, poke_hp, poke_id, poke_exp, poke_weight, poke_height, poke_attack, poke_defense, poke_special_attack, poke_special_defense, poke_speed, error, titles, poke_abilities, poke_warning, poke_cries];
 
 function clearCurrentSearch(){
   // inputString.value = '';
+  prevBtn.classList.add('hide');
+  nextBtn.classList.add('hide');
   header.style = 'margin-top: 200px;';
   poke_card.classList.toggle('poke-infos-display');
   poke_card.style = "";
@@ -219,5 +228,27 @@ function clearCurrentSearch(){
   elements.forEach(el => {
     el.innerHTML = "";
   })
+  titles.innerHTML = '';
 
 }
+
+
+nextBtn.addEventListener('click', function(e){
+  
+  if (BUTTON_ID_VALUE == 1025){
+    BUTTON_ID_VALUE = 1;
+  }else{
+    BUTTON_ID_VALUE++;
+  }
+  displayPokemonInfo(BUTTON_ID_VALUE.toString());
+})
+
+prevBtn.addEventListener('click', function(e){
+  
+  if (BUTTON_ID_VALUE == 1){
+    BUTTON_ID_VALUE = 1025;
+  }else{
+    BUTTON_ID_VALUE--;
+  }
+  displayPokemonInfo(BUTTON_ID_VALUE.toString());
+})
